@@ -1,5 +1,6 @@
-# Dev Bootstrap (tech needed in the near future)
+# Dev Bootstrap
 
-## 1. Python
-## 2. Perl
-## 3. Groovy (Jenkins)
+- Python
+- Groovy (Jenkins)
+- Scripting (terminal)
+- Perl 
