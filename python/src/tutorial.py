@@ -151,9 +151,7 @@ print(txt)
 txt = "we are\t the\t \"music makers\"!\t yeah!" # tab as \t
 print(txt)
 
-
-import json
-conf = "/workspace/conf/conf.json"
-with open(conf, 'r') as f:
-    if conf.endswith(".json"):
-        data = json.load(conf)
+# --------- BOOLEAN ----------------
+def somefunc():
+    return False
+print(somefunc())
