@@ -144,3 +144,8 @@ txt1 = f"price is {price:.2f} $"
 print(txt1)
 txt2 = f"price is twice expensive {59 * 2} " 
 print(txt2)
+
+# --------- ESCAPE CHARACTER ----------------
+txt = "we are the \"music makers\"! yeah!"
+print(txt)
+
