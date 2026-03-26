@@ -148,4 +148,6 @@ print(txt2)
 # --------- ESCAPE CHARACTER ----------------
 txt = "we are the \"music makers\"! yeah!"
 print(txt)
+txt = "we are\t the\t \"music makers\"!\t yeah!"
+print(txt)
 
