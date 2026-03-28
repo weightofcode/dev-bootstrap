@@ -123,7 +123,6 @@ print("i:", i, "len(i):", len(i))
 print("j:", j, "len(j):", len(j))
 
 # --------- MODIFY ----------------
-
 name = '"Harald Konrad "'
 u = name.upper()
 print(u)
@@ -152,6 +151,12 @@ txt = "we are\t the\t \"music makers\"!\t yeah!" # tab as \t
 print(txt)
 
 # --------- BOOLEAN ----------------
-def somefunc():
+def somefunc():         # functions
     return False
 print(somefunc())
+
+class myclass():        # objects of a class
+    def __len(self):
+        return 0
+myobj = myclass()
+print("bool(myobj):", bool(myobj))
