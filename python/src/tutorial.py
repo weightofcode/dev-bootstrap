@@ -160,3 +160,31 @@ class myclass():        # objects of a class
         return 0
 myobj = myclass()
 print("bool(myobj):", bool(myobj))
+
+
+
+# --------- OPERATORS ----------------
+# WALRUS
+print("WALRUS")
+nums = [1,2,3,4]
+if (count := len(nums)) > 2:
+    print(f"nums[] has {count} elements")
+
+x = 5
+print("x = 5 : 1 < x < 10:", 1 < x < 10)
+
+# IDENTITY
+print("IDENTITY")
+a = ['apple', 'banana']
+b = ['apple', 'banana']
+c = a
+print(a is c) # true
+print(a is b) # false
+print(a == b) # true (comparing content)
+
+# MEMBERSHIP
+print("MEMBERSHIP")
+fruit = ["apple", "cherry"]
+a = "cherry"
+print("a in fruit", a in fruit)
+
