@@ -104,105 +104,120 @@ print('###############################################')
 # print('length of c:', len(c))
 
 # check str
-x = "hello world"
-print('hi in x:', 'hi' in x)
-
-t = str(4+5+10)
-m = str(1)
-n = str(2)
-if m in t:
-    print('m=1 in t:', bool(m))
-if n not in t:
-    print('n=2 not in t:', bool(n))
-
-# --------- SLICE ----------------
-x = "greetings"
-i = (x[3:6])
-j = x[:len(x)]
-print("i:", i, "len(i):", len(i))
-print("j:", j, "len(j):", len(j))
-
-# --------- MODIFY ----------------
-name = '"Harald Konrad "'
-u = name.upper()
-print(u)
-l = name.lower()
-print(l)
-s = name.strip() # remove whitespace
-print(s)
-r = name.replace('a', 'u')
-print(r)
-
-# --------- FORMAT ----------------
-age = 45
-txt = f"age is {age}"
-print(txt)
-price = 59
-# placeholder can include MODIFIER or Python code
-txt1 = f"price is {price:.2f} $" 
-print(txt1)
-txt2 = f"price is twice expensive {59 * 2} " 
-print(txt2)
-
-# --------- ESCAPE CHARACTER ----------------
-txt = "we are the \"music makers\"! yeah!"
-print(txt)
-txt = "we are\t the\t \"music makers\"!\t yeah!" # tab as \t
-print(txt)
-
-# --------- BOOLEAN ----------------
-def somefunc():         # functions
-    return False
-print(somefunc())
-
-class myclass():        # objects of a class
-    def __len(self):
-        return 0
-myobj = myclass()
-print("bool(myobj):", bool(myobj))
-
-
-
-# --------- OPERATORS ----------------
-# WALRUS
-print("WALRUS")
-nums = [1,2,3,4]
-if (count := len(nums)) > 2:
-    print(f"nums[] has {count} elements")
-
-x = 5
-print("x = 5 : 1 < x < 10:", 1 < x < 10)
-
-# IDENTITY
-print("IDENTITY")
-a = ['apple', 'banana']
-b = ['apple', 'banana']
-c = a
-print(a is c) # true
-print(a is b) # false
-print(a == b) # true (comparing content)
-
-# MEMBERSHIP
-print("MEMBERSHIP")
-fruit = ["apple", "cherry"]
-a = "cherry"
-p = "pineapple"
-print("a in fruit", a in fruit)
-print("p not in fruit", not p in fruit)
-
-# BITWISE
-print("BITWISE")
-a = 41
-b = 55
-print("55 << 1:", b << 1)
-print("41 ^ 55:", a ^ b)
-c = 6
-print("~6:", ~c)
+# x = "hello world"
+# print('hi in x:', 'hi' in x)
+# 
+# t = str(4+5+10)
+# m = str(1)
+# n = str(2)
+# if m in t:
+#     print('m=1 in t:', bool(m))
+# if n not in t:
+#     print('n=2 not in t:', bool(n))
+# 
+# # --------- SLICE ----------------
+# x = "greetings"
+# i = (x[3:6])
+# j = x[:len(x)]
+# print("i:", i, "len(i):", len(i))
+# print("j:", j, "len(j):", len(j))
+# 
+# # --------- MODIFY ----------------
+# name = '"Harald Konrad "'
+# u = name.upper()
+# print(u)
+# l = name.lower()
+# print(l)
+# s = name.strip() # remove whitespace
+# print(s)
+# r = name.replace('a', 'u')
+# print(r)
+# 
+# # --------- FORMAT ----------------
+# age = 45
+# txt = f"age is {age}"
+# print(txt)
+# price = 59
+# # placeholder can include MODIFIER or Python code
+# txt1 = f"price is {price:.2f} $" 
+# print(txt1)
+# txt2 = f"price is twice expensive {59 * 2} " 
+# print(txt2)
+# 
+# # --------- ESCAPE CHARACTER ----------------
+# txt = "we are the \"music makers\"! yeah!"
+# print(txt)
+# txt = "we are\t the\t \"music makers\"!\t yeah!" # tab as \t
+# print(txt)
+# 
+# # --------- BOOLEAN ----------------
+# def somefunc():         # functions
+#     return False
+# print(somefunc())
+# 
+# class myclass():        # objects of a class
+#     def __len(self):
+#         return 0
+# myobj = myclass()
+# print("bool(myobj):", bool(myobj))
+# 
+# 
+# 
+# # --------- OPERATORS ----------------
+# # WALRUS
+# print("WALRUS")
+# nums = [1,2,3,4]
+# if (count := len(nums)) > 2:
+#     print(f"nums[] has {count} elements")
+# 
+# x = 5
+# print("x = 5 : 1 < x < 10:", 1 < x < 10)
+# 
+# # IDENTITY
+# print("IDENTITY")
+# a = ['apple', 'banana']
+# b = ['apple', 'banana']
+# c = a
+# print(a is c) # true
+# print(a is b) # false
+# print(a == b) # true (comparing content)
+# 
+# # MEMBERSHIP
+# print("MEMBERSHIP")
+# fruit = ["apple", "cherry"]
+# a = "cherry"
+# p = "pineapple"
+# print("a in fruit", a in fruit)
+# print("p not in fruit", not p in fruit)
+# 
+# # BITWISE
+# print("BITWISE")
+# a = 41
+# b = 55
+# print("55 << 1:", b << 1)
+# print("41 ^ 55:", a ^ b)
+# c = 6
+# print("~6:", ~c)
 
 
 # --------- PYTHON DATA COLLECTIONS ---------
 # LIST
+constr = list((0x4,0xb,0x0)) # Constructor (notice the () instead of [])
+
 state_machine = [True, False, True]
 print("LIST:", state_machine)
+r = state_machine[1:2] # slicing always returns a list
+print(r)
 random_data = [True, "0x45", False, 14, (35-15), len(state_machine), "hi", False, (len(state_machine) * (False/True)), True]
 print("Random Data LIST:", random_data, "Type of random_data:", type(random_data))
+print("random_data[-3]:", random_data[-3])
+print("random_data[2:7]", random_data[2:7])
+print("random_data[4:]", random_data[4:])
+print("random_data[-3:]", random_data[-3:])
+print("random_data[-3:2]", random_data[-3:2]) # empty list (the same as [7:2], when it should be [2:7])
+
+if (False in random_data):
+        print(f"False exists in {random_data}")
+    # for f in random_data:
+    #     print(f"False is in {random_data} {f} times")
+    # # return  - can only return from a function
