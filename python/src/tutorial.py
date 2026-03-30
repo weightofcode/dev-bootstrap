@@ -200,7 +200,7 @@ print('###############################################')
 # print("~6:", ~c)
 
 
-# --------- PYTHON DATA COLLECTIONS ---------
+# --------- PYTHON COLLECTIONS ---------
 # LIST
 constr = list((0x4,0xb,0x0)) # Constructor (notice the () instead of [])
 
@@ -221,3 +221,10 @@ if (False in random_data):
     # for f in random_data:
     #     print(f"False is in {random_data} {f} times")
     # # return  - can only return from a function
+
+num = [1,2,3,4,5]
+print("num is:", num)
+num[1:3] = [21,56]  # insert items in a list
+print("num[1:3] = [21,56] is:", num)
+num.insert(4, 0x22) # insert items in a list
+print("num is now:", num)
