@@ -186,5 +186,23 @@ print(a == b) # true (comparing content)
 print("MEMBERSHIP")
 fruit = ["apple", "cherry"]
 a = "cherry"
+p = "pineapple"
 print("a in fruit", a in fruit)
+print("p not in fruit", not p in fruit)
 
+# BITWISE
+print("BITWISE")
+a = 41
+b = 55
+print("55 << 1:", b << 1)
+print("41 ^ 55:", a ^ b)
+c = 6
+print("~6:", ~c)
+
+
+# --------- PYTHON DATA COLLECTIONS ---------
+# LIST
+state_machine = [True, False, True]
+print("LIST:", state_machine)
+random_data = [True, "0x45", False, 14, (35-15), len(state_machine), "hi", False, (len(state_machine) * (False/True)), True]
+print("Random Data LIST:", random_data, "Type of random_data:", type(random_data))
