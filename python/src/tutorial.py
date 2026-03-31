@@ -224,7 +224,10 @@ if (False in random_data):
 
 num = [1,2,3,4,5]
 print("num is:", num)
-num[1:3] = [21,56]  # insert items in a list
+num[1:3] = [21,56]                      # slice [a:b]
 print("num[1:3] = [21,56] is:", num)
-num.insert(4, 0x22) # insert items in a list
+num.insert(4, 0x22)                     # index [i, value]
 print("num is now:", num)
+num.append(5)                           # append()
+num.index(0, 31)                        # index()
+num.extend(state_machine)               # extend() - append other list
