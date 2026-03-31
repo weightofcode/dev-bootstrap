@@ -218,9 +218,6 @@ print("random_data[-3:2]", random_data[-3:2]) # empty list (the same as [7:2], w
 
 if (False in random_data):
         print(f"False exists in {random_data}")
-    # for f in random_data:
-    #     print(f"False is in {random_data} {f} times")
-    # # return  - can only return from a function
 
 num = [1,2,3,4,5]
 print("num is:", num)
@@ -230,3 +227,7 @@ num.insert(4, 0x22)                     # insert(i, v)
 print("num is now:", num)
 num.append(5)                           # append(v)
 num.extend(state_machine)               # extend(other_list) - append other_list
+num.remove(5)                           # remove(v) - only the first occurence
+num.pop(1)                              # pop(i) - last item without specifying i
+num.clear()                             # clear() - removes all list items
+del num                                 # del list
