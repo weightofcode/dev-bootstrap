@@ -252,7 +252,12 @@ for album in albums_in_store:
         albums_to_buy.append(album)
         print(albums_to_buy)
 # or we can re-write the loop in a more compact way
-# only if condition is True
+# only if condition *evaluates* to True
 albums_in_store = ["nirvana", "blues", "rock", "jazz"]
 albums_to_buy = [album for album in albums_in_store if "j" in album]
 print(albums_to_buy)
+do_not_buy_nirvana = [album for album in albums_in_store if album != "nirvana"]
+print(do_not_buy_nirvana)
+# condition is optional
+buy_everything = [album for album in albums_in_store]
+print(buy_everything)
