@@ -245,10 +245,14 @@ while i < len(digits):              # while i < len(list)
 
 # list COMPREHENSION
 # we can write explicit for loop to create new list
-albume_la_magazin = ["nirvana", "blues", "rock", "jazz"]
-albume_de_cumparat = []
-for album in albume_la_magazin:
+albums_in_store = ["nirvana", "blues", "rock", "jazz"]
+albums_to_buy = []
+for album in albums_in_store:
     if "j" in album:
-        albume_de_cumparat.append(album)
-        print(albume_de_cumparat)
-
+        albums_to_buy.append(album)
+        print(albums_to_buy)
+# or we can re-write the loop in a more compact way
+# only if condition is True
+albums_in_store = ["nirvana", "blues", "rock", "jazz"]
+albums_to_buy = [album for album in albums_in_store if "j" in album]
+print(albums_to_buy)
