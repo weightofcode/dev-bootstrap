@@ -267,3 +267,16 @@ print(new_numbers)
 old_digits = [1, 2, 3, 4, 5]
 replace_all_digits_with_9 = [9 for digit in old_digits]
 print(replace_all_digits_with_9)
+# in case of outcome, it can be an expression too!
+# [(value_if_true if condition) else (value_if_false) (for item in iterable)]
+replace_digits = [2 if digit != 5 else 3 for digit in old_digits]
+print(replace_digits)
+
+# replace_digits = []
+# for digit in old_digits:
+#     if (digit != 5):
+#         digit = 2
+#     else:
+#         digit = 3
+#     replace_digits.append(digit)
+# print(replace_digits)
