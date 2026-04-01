@@ -249,5 +249,6 @@ albume_la_magazin = ["nirvana", "blues", "rock", "jazz"]
 albume_de_cumparat = []
 for album in albume_la_magazin:
     if "j" in album:
-        album.append(fruct)
+        albume_de_cumparat.append(album)
+        print(albume_de_cumparat)
 
