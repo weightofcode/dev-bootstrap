@@ -261,3 +261,9 @@ print(do_not_buy_nirvana)
 # condition is optional
 buy_everything = [album for album in albums_in_store]
 print(buy_everything)
+new_numbers = [nums for nums in range(10) if nums < 5]
+print(new_numbers)
+# item = item in iteration OR the outcome
+old_digits = [1, 2, 3, 4, 5]
+replace_all_digits_with_9 = [9 for digit in old_digits]
+print(replace_all_digits_with_9)
