@@ -200,9 +200,10 @@ print('###############################################')
 # print("~6:", ~c)
 
 
-# --------- PYTHON COLLECTIONS ---------
-# LIST
-constr = list((0x4,0xb,0x0)) # Constructor (notice the () instead of [])
+# PYTHON COLLECTIONS ------------------
+## 1. LIST ----------------------------
+
+constructor = list((0x4,0xb,0x0)) # Constructor (notice the () instead of [])
 
 state_machine = [True, False, True]
 print("LIST:", state_machine)
@@ -216,9 +217,6 @@ print("random_data[4:]", random_data[4:])
 print("random_data[-3:]", random_data[-3:])
 print("random_data[-3:2]", random_data[-3:2]) # empty list (the same as [7:2], when it should be [2:7])
 
-if (False in random_data):
-        print(f"False exists in {random_data}")
-
 num = [1,2,3,4,5]
 print("num is:", num)
 num[1:3] = [21,56]                      # slice [i:j]
@@ -231,3 +229,25 @@ num.remove(5)                           # remove(v) - only the first occurence
 num.pop(1)                              # pop(i) - last item without specifying i
 num.clear()                             # clear() - removes all list items
 del num                                 # del list
+
+digits = [1,2,3]
+print("for d in digits:")
+for d in digits:                    # item in list
+    print(d)
+print("for i in range(len(digits)):")
+for i in range(len(digits)):        # i in range(len(list))
+    print(digits[i])
+print("while i < len(digits):")
+i = 0
+while i < len(digits):              # while i < len(list)
+    print(digits[i])
+    i += 1
+
+# list COMPREHENSION
+# we can write explicit for loop to create new list
+albume_la_magazin = ["nirvana", "blues", "rock", "jazz"]
+albume_de_cumparat = []
+for album in albume_la_magazin:
+    if "j" in album:
+        album.append(fruct)
+
