@@ -205,43 +205,43 @@ print('###############################################')
 
 constructor = list((0x4,0xb,0x0)) # Constructor (notice the () instead of [])
 
-state_machine = [True, False, True]
-print("LIST:", state_machine)
-r = state_machine[1:2] # slicing always returns a list
-print(r)
-random_data = [True, "0x45", False, 14, (35-15), len(state_machine), "hi", False, (len(state_machine) * (False/True)), True]
-print("Random Data LIST:", random_data, "Type of random_data:", type(random_data))
-print("random_data[-3]:", random_data[-3])
-print("random_data[2:7]", random_data[2:7])
-print("random_data[4:]", random_data[4:])
-print("random_data[-3:]", random_data[-3:])
-print("random_data[-3:2]", random_data[-3:2]) # empty list (the same as [7:2], when it should be [2:7])
-
-num = [1,2,3,4,5]
-print("num is:", num)
-num[1:3] = [21,56]                      # slice [i:j]
-print("num[1:3] = [21,56] is:", num)
-num.insert(4, 0x22)                     # insert(i, v)
-print("num is now:", num)
-num.append(5)                           # append(v)
-num.extend(state_machine)               # extend(other_list) - append other_list
-num.remove(5)                           # remove(v) - only the first occurence
-num.pop(1)                              # pop(i) - last item without specifying i
-num.clear()                             # clear() - removes all list items
-del num                                 # del list
-
-digits = [1,2,3]
-print("for d in digits:")
-for d in digits:                    # item in list
-    print(d)
-print("for i in range(len(digits)):")
-for i in range(len(digits)):        # i in range(len(list))
-    print(digits[i])
-print("while i < len(digits):")
-i = 0
-while i < len(digits):              # while i < len(list)
-    print(digits[i])
-    i += 1
+# state_machine = [True, False, True]
+# print("LIST:", state_machine)
+# r = state_machine[1:2] # slicing always returns a list
+# print(r)
+# random_data = [True, "0x45", False, 14, (35-15), len(state_machine), "hi", False, (len(state_machine) * (False/True)), True]
+# print("Random Data LIST:", random_data, "Type of random_data:", type(random_data))
+# print("random_data[-3]:", random_data[-3])
+# print("random_data[2:7]", random_data[2:7])
+# print("random_data[4:]", random_data[4:])
+# print("random_data[-3:]", random_data[-3:])
+# print("random_data[-3:2]", random_data[-3:2]) # empty list (the same as [7:2], when it should be [2:7])
+# 
+# num = [1,2,3,4,5]
+# print("num is:", num)
+# num[1:3] = [21,56]                      # slice [i:j]
+# print("num[1:3] = [21,56] is:", num)
+# num.insert(4, 0x22)                     # insert(i, v)
+# print("num is now:", num)
+# num.append(5)                           # append(v)
+# num.extend(state_machine)               # extend(other_list) - append other_list
+# num.remove(5)                           # remove(v) - only the first occurence
+# num.pop(1)                              # pop(i) - last item without specifying i
+# num.clear()                             # clear() - removes all list items
+# del num                                 # del list
+# 
+# digits = [1,2,3]
+# print("for d in digits:")
+# for d in digits:                    # item in list
+#     print(d)
+# print("for i in range(len(digits)):")
+# for i in range(len(digits)):        # i in range(len(list))
+#     print(digits[i])
+# print("while i < len(digits):")
+# i = 0
+# while i < len(digits):              # while i < len(list)
+#     print(digits[i])
+#     i += 1
 
 # list COMPREHENSION
 # we can write explicit for loop to create new list
@@ -251,6 +251,7 @@ for album in albums_in_store:
     if "j" in album:
         albums_to_buy.append(album)
         print(albums_to_buy)
+
 # or we can re-write the loop in a more compact way
 # only if condition *evaluates* to True
 albums_in_store = ["nirvana", "blues", "rock", "jazz"]
@@ -258,25 +259,29 @@ albums_to_buy = [album for album in albums_in_store if "j" in album]
 print(albums_to_buy)
 do_not_buy_nirvana = [album for album in albums_in_store if album != "nirvana"]
 print(do_not_buy_nirvana)
+
 # condition is optional
 buy_everything = [album for album in albums_in_store]
 print(buy_everything)
 new_numbers = [nums for nums in range(10) if nums < 5]
 print(new_numbers)
+
 # item = item in iteration OR the outcome
 old_digits = [1, 2, 3, 4, 5]
 replace_all_digits_with_9 = [9 for digit in old_digits]
 print(replace_all_digits_with_9)
+
 # in case of outcome, it can be an expression too!
 # [(value_if_true if condition) else (value_if_false) (for item in iterable)]
+# [(return value if condition true) else (value_if_false) (for item in iterable)]
 replace_digits = [2 if digit != 5 else 3 for digit in old_digits]
 print(replace_digits)
 
-# replace_digits = []
-# for digit in old_digits:
-#     if (digit != 5):
-#         digit = 2
-#     else:
-#         digit = 3
-#     replace_digits.append(digit)
-# print(replace_digits)
+# sort (numeric & alphabetic)
+old_digits = [3,2,4,1,5]
+print("[3,2,4,1,5].sort() :", old_digits)
+# sort reverse
+old_digits = [3,2,4,1,5]
+old_digits.sort(reverse = True)
+print("[3,2,4,1,5].sort(revere=True), :", old_digits)
+
