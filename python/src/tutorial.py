@@ -279,9 +279,23 @@ print(replace_digits)
 
 # sort (numeric & alphabetic)
 old_digits = [3,2,4,1,5]
+old_digits.sort()
 print("[3,2,4,1,5].sort() :", old_digits)
-# sort reverse
+# sort reverse=True (descending)
 old_digits = [3,2,4,1,5]
 old_digits.sort(reverse = True)
-print("[3,2,4,1,5].sort(revere=True), :", old_digits)
+print("[3,2,4,1,5].sort(reverse=True) :", old_digits)
+# sort with function as key
+def myfunc(v):
+    return abs(v - 50)
+numms = [100,50,32,85,14]
+numms.sort(key = myfunc)
+print("[100,50,32,85,14] sort(key = func) :", numms)
+# reverse
+old_digits.reverse()
+print("[3,2,4,1,5].reverse() :", old_digits)
+nums = [1,2,3,4,5]
+nums.reverse()
+print("[1,2,3,4,5].reverse() :", nums)
+
 
