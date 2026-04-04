@@ -14,7 +14,7 @@ def generate_random_number():
     print(f"between {MIN_RANGE} and {MAX_RANGE}...")
     print("------------------------------------------")
     rn = randint(MIN_RANGE, MAX_RANGE)
-    print(f"DEBUG: RNG: {rn}")
+    # print(f"DEBUG: RNG: {rn}")
     return rn
 
 def read_user_input():
