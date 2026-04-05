@@ -27,7 +27,7 @@ def define_word_list():
             "apple", "orange", "banana", "kiwi", "pear", "plum", "pineapple", 
             "grapes", "cherry"
             ]
-    return words_to_pick_from:w
+    return words_to_pick_from
 
 def get_word_from_list():
     word_list = define_word_list()
@@ -37,3 +37,9 @@ def get_word_from_list():
 def read_char_from_input():
     char = input("Enter a character:", )
     return char
+
+
+if __name__ == "__main__":
+
+    username = input("Who are you?", )
+    print("Hello", username)
