@@ -38,8 +38,17 @@ def read_char_from_input():
     char = input("Enter a character:", )
     return char
 
+def greet_user():
+    print("-------------------------------------------")
+    username = input("Who are you? ", )
+    print("Hello", username)
+    print("-------------------------------------------")
 
 if __name__ == "__main__":
+    greet_user()
 
-    username = input("Who are you?", )
-    print("Hello", username)
+    # ask for char form user
+    # is char in word -> give feedback
+    #   if yes -> ask user to guess the word
+    #       print the success if word is a match with random word
+    #   if not -> try again and decrease try count
