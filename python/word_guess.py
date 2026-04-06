@@ -75,8 +75,11 @@ def main():
 
             try_counter += 1
             print(f"Number of tries: {try_counter} out of {MAX_ALLOW_TRIES}")
+            # TODO: Handle try_counter >= MAX_ALLOW_TRIES
 
             print("-------------------------------------------")
+            # TODO: do not ask to guess the word all the time - it's annoying
+            # ask once per round?
             word_guess = input("Want to guess the word (once)? Type 'yes' or 'no': ", ).lower()
             if "yes" == word_guess:
                 gw = input("Guess the word: ", )
@@ -91,6 +94,7 @@ def main():
         else:
             print(f"The character [{c}] does not exist in the word. Try again!")
             try_counter += 1
+            print(f"Number of tries: {try_counter} out of {MAX_ALLOW_TRIES}")
 
 
 
