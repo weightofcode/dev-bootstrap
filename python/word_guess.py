@@ -48,7 +48,7 @@ def greet_user():
     print("-------------------------------------------")
 
 
-if __name__ == "__main__":
+def main():
     greet_user()
 
     # ask for char from user
@@ -59,16 +59,22 @@ if __name__ == "__main__":
 
     char_list = []
     word = get_word_from_list()
-    error_counter = 8
+    print(f"DEBUG = word: ", word)
+    try_counter = 0
     word_guess = ""
-    while error_counter < MAX_ALLOW_TRIES:
+    while try_counter <= MAX_ALLOW_TRIES:
         print("-------------------------------------------")
         c = read_char_from_input()
+        print(f"DEBUG = c: ", c)
+
         if c in word:
             print(f"The character [{c}] exits in the word!")
             char_list.append(c)
+            try_counter += 1
+            print(f"Number of tries: {try_counter} out of {MAX_ALLOW_TRIES}")
+
             print(f"Current guessed characters: {char_list}")
-            print("Want to guess the word?")
+            print("Want to guess the word?") # perhaps guess the word only once
             if word_guess:
                 gw = input("Guess the word: ", )
                 if word_guess == word:
@@ -82,3 +88,5 @@ if __name__ == "__main__":
             error_counter += 1
 
 
+if __name__ == "__main__":
+    main()
