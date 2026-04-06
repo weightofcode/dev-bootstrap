@@ -61,7 +61,6 @@ def main():
     word = get_word_from_list()
     print(f"DEBUG = word: ", word)
     try_counter = 0
-    word_guess = ""
     while try_counter <= MAX_ALLOW_TRIES:
         print("-------------------------------------------")
         c = read_char_from_input()
@@ -70,22 +69,29 @@ def main():
         if c in word:
             print(f"The character [{c}] exits in the word!")
             char_list.append(c)
+            # TODO: if char already exists in char_list, do not add it anymore
+            # increase try_counter and inform the user
+            print(f"Current guessed characters: {char_list}")
+
             try_counter += 1
             print(f"Number of tries: {try_counter} out of {MAX_ALLOW_TRIES}")
 
-            print(f"Current guessed characters: {char_list}")
-            print("Want to guess the word?") # perhaps guess the word only once
-            if word_guess:
+            print("-------------------------------------------")
+            word_guess = input("Want to guess the word (once)? Type 'yes' or 'no': ", ).lower()
+            if "yes" == word_guess:
                 gw = input("Guess the word: ", )
-                if word_guess == word:
+                if gw == word:
                     print(f"SUCCESS! The word was: {word}")
+                    print("-------------------------------------------")
+                    return
                 else:
-                    print("Try again?")
-                    # where do we stop? this seems almost correct
-                    # TODO: fix it
+                    print("You did not guess the word. Back to guess characters.")
+            else:
+                print("You did not want to guess the word. Back to guessing characters.")
         else:
             print(f"The character [{c}] does not exist in the word. Try again!")
-            error_counter += 1
+            try_counter += 1
+
 
 
 if __name__ == "__main__":
