@@ -42,10 +42,15 @@ def read_char_from_input():
     return char
 
 def greet_user():
-    print("-------------------------------------------")
+    print("----------------------------------------------------------------")
     username = input("Who are you? ", )
     print("Hello", username)
-    print("-------------------------------------------")
+    print("Objective: guess the word.")
+    print("Gameplay: Guess characters.")
+    print("If you guessed the character, attempt to guess the word")
+    print("Leave blank if you do not want to guess the word.")
+    print("Rules: You may guess a char 8 times. Word guess does not count.")
+    print("----------------------------------------------------------------")
 
 
 def main():
@@ -67,10 +72,11 @@ def main():
         print(f"DEBUG = c: ", c)
 
         if c in word:
-            print(f"The character [{c}] exits in the word!")
-            char_list.append(c)
-            # TODO: if char already exists in char_list, do not add it anymore
-            # increase try_counter and inform the user
+            print(f"The character [{c}] exits in the word.")
+            if c not in char_list:
+                char_list.append(c)
+            else:
+                print("Character already in guessed.")
             print(f"Current guessed characters: {char_list}")
 
             try_counter += 1
@@ -80,7 +86,11 @@ def main():
             print("-------------------------------------------")
             # TODO: do not ask to guess the word all the time - it's annoying
             # ask once per round?
-            word_guess = input("Want to guess the word (once)? Type 'yes' or 'no': ", ).lower()
+            word_guess = input("Guess the word: ", )
+            if word_guess == word:
+                    print(f"SUCCESS! The word was: {word}")
+
+
             if "yes" == word_guess:
                 gw = input("Guess the word: ", )
                 if gw == word:
