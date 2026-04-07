@@ -1,20 +1,8 @@
+# ------------------------------------------------------
 # Word guessing game
+# ------------------------------------------------------
 
 import random
-
-# REQ from PRJ
-# - Import random
-# - Getting the User's Name, and Greeting the User
-# - List of Words and Choosing a Random Word
-# - Prompting the User to Guess
-# - The Main Game Loop
-#     Checking Each Character in the Word
-#     has the user won?
-#     prompt next guess
-#     handle incorrect guess
-#     check if user has lost
-#     end
-
 
 MAX_ALLOW_TRIES = 8
 
@@ -70,6 +58,8 @@ def main():
         print("----------------------------------------------------------------")
         c = read_char_from_input()
 
+        # TODO: Idea -> if a character exists multiple times in a word
+        # add it in the char_list as many times as it is in the word
         if c in word:
             print(f"The character [{c}] exists in the word.")
             if c not in char_list:
