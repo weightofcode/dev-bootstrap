@@ -1,5 +1,5 @@
 # ---------------------------------------------
-# Guess the number between 1 and 100
+# Guess the number
 # ---------------------------------------------
 
 from random import randint
