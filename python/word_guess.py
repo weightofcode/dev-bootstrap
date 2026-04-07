@@ -37,11 +37,11 @@ def read_char_from_input():
 def keep_track_of_counter(counter, max_tries_allowed):
     if counter < max_tries_allowed:
         counter += 1
-        print(f"Number of tries: {counter}")
+        print(f"Number of attempts: {counter} / {max_tries_allowed}")
     else:
         pass
     if counter == max_tries_allowed:
-        print(f"Max tries reached: {counter} out of {max_tries_allowed}")
+        print(f"Max number of attempts reached.")
         print(f"Game over! Better luck next time!")
     else:
         pass
@@ -50,11 +50,11 @@ def keep_track_of_counter(counter, max_tries_allowed):
 def greet_user():
     print("----------------------------------------------------------------")
     username = input("Who are you? ", )
-    print("Hello", username)
+    print("Hello", username, "!")
     print("Objective:\t Guess the word.")
     print("Gameplay:\t Guess characters.")
     print("Rules:\t\t You may guess a char 8 times.")
-    print("* If you guessed the character, attempt to guess the word.")
+    print("* If you guessed the character, you may guess the word.")
     print("* Leave blank if you do not want to guess the word.")
     print("----------------------------------------------------------------")
 
@@ -64,12 +64,11 @@ def main():
 
     char_list = []
     word = get_word_from_list()
-    # print(f"DEBUG = word: ", word)
     try_counter = 0
+
     while try_counter < MAX_ALLOW_TRIES:
         print("----------------------------------------------------------------")
         c = read_char_from_input()
-        # print(f"DEBUG = c: ", c)
 
         if c in word:
             print(f"The character [{c}] exists in the word.")
@@ -86,7 +85,7 @@ def main():
                 print(f"SUCCESS! The word was: {word}")
                 return
             else:
-                print("Wrong guess or not guessing. Back to guessing characters.")
+                print("Not guessing or wrong guess. Back to guessing characters.")
         else:
             print(f"The character [{c}] does not exist in the word.")
             try_counter = keep_track_of_counter(try_counter, MAX_ALLOW_TRIES)
