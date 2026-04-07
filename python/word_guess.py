@@ -2,13 +2,6 @@
 
 import random
 
-# define the list of words to guess from
-# pick a random word from the list
-# define the allowed number of retries
-# read chars from input and inform the user if they are part of the word or not
-# etc
-
-
 # REQ from PRJ
 # - Import random
 # - Getting the User's Name, and Greeting the User
@@ -38,47 +31,45 @@ def get_word_from_list():
     return word
 
 def read_char_from_input():
-    char = input("Enter a character:", )
+    char = input("Enter a character: ", )
     return char
 
 def keep_track_of_counter(counter, max_tries_allowed):
-    if counter <= max_tries_allowed:
+    if counter < max_tries_allowed:
         counter += 1
-        print(f"Number of tries: {counter} out of {max_allow_tries}")
+        print(f"Number of tries: {counter}")
     else:
-        printf(f"Max tries reached: {counter} out of {max_tries_allowed}.")
-        printf(f"Game over! Better luck next time!")
+        pass
+    if counter == max_tries_allowed:
+        print(f"Max tries reached: {counter} out of {max_tries_allowed}")
+        print(f"Game over! Better luck next time!")
+    else:
+        pass
     return counter
 
 def greet_user():
     print("----------------------------------------------------------------")
     username = input("Who are you? ", )
     print("Hello", username)
-    print("Objective: guess the word.")
-    print("Gameplay: Guess characters.")
-    print("If you guessed the character, attempt to guess the word")
-    print("Leave blank if you do not want to guess the word.")
-    print("Rules: You may guess a char 8 times. Word guess does not count.")
+    print("Objective:\t Guess the word.")
+    print("Gameplay:\t Guess characters.")
+    print("Rules:\t\t You may guess a char 8 times.")
+    print("* If you guessed the character, attempt to guess the word.")
+    print("* Leave blank if you do not want to guess the word.")
     print("----------------------------------------------------------------")
 
 
 def main():
     greet_user()
 
-    # ask for char from user
-    # is char in word?
-    #   if yes -> ask user to guess the word
-    #       print the success if word is a match with random word
-    #   if not -> try again and decrease try count
-
     char_list = []
     word = get_word_from_list()
-    print(f"DEBUG = word: ", word)
+    # print(f"DEBUG = word: ", word)
     try_counter = 0
-    while try_counter <= MAX_ALLOW_TRIES:
+    while try_counter < MAX_ALLOW_TRIES:
         print("----------------------------------------------------------------")
         c = read_char_from_input()
-        print(f"DEBUG = c: ", c)
+        # print(f"DEBUG = c: ", c)
 
         if c in word:
             print(f"The character [{c}] exists in the word.")
@@ -87,23 +78,20 @@ def main():
             else:
                 print("Character already in guessed.")
             print(f"Current guessed characters: {char_list}")
+            try_counter = keep_track_of_counter(try_counter, MAX_ALLOW_TRIES)
 
-            # TODO: Handle try_counter >= MAX_ALLOW_TRIES
-            # try_counter += 1
-            # print(f"Number of tries: {try_counter} out of {MAX_ALLOW_TRIES}")
-            keep_track_of_counter(try_counter, MAX_ALLOW_TRIES)
             print("----------------------------------------------------------------")
             word_guess = input("Guess the word. Leave blank if not want to guess: ", )
             if word_guess == word:
                 print(f"SUCCESS! The word was: {word}")
                 return
             else:
-                print("Skipped guessing the word. Back to guessing characters.")
+                print("Wrong guess or not guessing. Back to guessing characters.")
         else:
-            print(f"The character [{c}] does not exist in the word. Try again.")
-            # try_counter += 1
-            # print(f"Number of tries: {try_counter} out of {MAX_ALLOW_TRIES}")
-
+            print(f"The character [{c}] does not exist in the word.")
+            try_counter = keep_track_of_counter(try_counter, MAX_ALLOW_TRIES)
+            if try_counter < MAX_ALLOW_TRIES:
+                print("Try again.")
 
 
 if __name__ == "__main__":
