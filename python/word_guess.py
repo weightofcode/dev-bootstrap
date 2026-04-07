@@ -41,6 +41,15 @@ def read_char_from_input():
     char = input("Enter a character:", )
     return char
 
+def keep_track_of_counter(counter, max_tries_allowed):
+    if counter <= max_tries_allowed:
+        counter += 1
+        print(f"Number of tries: {counter} out of {max_allow_tries}")
+    else:
+        printf(f"Max tries reached: {counter} out of {max_tries_allowed}.")
+        printf(f"Game over! Better luck next time!")
+    return counter
+
 def greet_user():
     print("----------------------------------------------------------------")
     username = input("Who are you? ", )
@@ -67,44 +76,33 @@ def main():
     print(f"DEBUG = word: ", word)
     try_counter = 0
     while try_counter <= MAX_ALLOW_TRIES:
-        print("-------------------------------------------")
+        print("----------------------------------------------------------------")
         c = read_char_from_input()
         print(f"DEBUG = c: ", c)
 
         if c in word:
-            print(f"The character [{c}] exits in the word.")
+            print(f"The character [{c}] exists in the word.")
             if c not in char_list:
                 char_list.append(c)
             else:
                 print("Character already in guessed.")
             print(f"Current guessed characters: {char_list}")
 
-            try_counter += 1
-            print(f"Number of tries: {try_counter} out of {MAX_ALLOW_TRIES}")
             # TODO: Handle try_counter >= MAX_ALLOW_TRIES
-
-            print("-------------------------------------------")
-            # TODO: do not ask to guess the word all the time - it's annoying
-            # ask once per round?
-            word_guess = input("Guess the word: ", )
+            # try_counter += 1
+            # print(f"Number of tries: {try_counter} out of {MAX_ALLOW_TRIES}")
+            keep_track_of_counter(try_counter, MAX_ALLOW_TRIES)
+            print("----------------------------------------------------------------")
+            word_guess = input("Guess the word. Leave blank if not want to guess: ", )
             if word_guess == word:
-                    print(f"SUCCESS! The word was: {word}")
-
-
-            if "yes" == word_guess:
-                gw = input("Guess the word: ", )
-                if gw == word:
-                    print(f"SUCCESS! The word was: {word}")
-                    print("-------------------------------------------")
-                    return
-                else:
-                    print("You did not guess the word. Back to guess characters.")
+                print(f"SUCCESS! The word was: {word}")
+                return
             else:
-                print("You did not want to guess the word. Back to guessing characters.")
+                print("Skipped guessing the word. Back to guessing characters.")
         else:
-            print(f"The character [{c}] does not exist in the word. Try again!")
-            try_counter += 1
-            print(f"Number of tries: {try_counter} out of {MAX_ALLOW_TRIES}")
+            print(f"The character [{c}] does not exist in the word. Try again.")
+            # try_counter += 1
+            # print(f"Number of tries: {try_counter} out of {MAX_ALLOW_TRIES}")
 
 
 
