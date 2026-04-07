@@ -16,7 +16,9 @@ def generate_random_number():
     return rn
 
 def read_user_input():
-    num = input("INPUT: Gues the number: ")
+    # TODO: try except for digits to fail gracefully
+    # in case user enters garbage value
+    num = int(input("INPUT: Guess the number: "))
     print("--------------------------------------------------------------")
     return num
 
