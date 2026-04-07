@@ -9,18 +9,15 @@ MAX_RANGE = 100
 
 
 def generate_random_number():
-    print("------------------------------------------")
-    print(f"Generating a random number ")
-    print(f"between {MIN_RANGE} and {MAX_RANGE}...")
-    print("------------------------------------------")
+    print("--------------------------------------------------------------")
+    print(f"Generating a random number between {MIN_RANGE} and {MAX_RANGE}...")
+    print("--------------------------------------------------------------")
     rn = randint(MIN_RANGE, MAX_RANGE)
-    # print(f"DEBUG: RNG: {rn}")
     return rn
 
 def read_user_input():
-    print("INPUT: Enter a number between 0 and 100:")
-    print("------------------------------------------")
-    num = int(input("Your number:",))
+    num = input("INPUT: Gues the number: ")
+    print("--------------------------------------------------------------")
     return num
 
 def main():
