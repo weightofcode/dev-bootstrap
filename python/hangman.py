@@ -9,6 +9,17 @@ import random
 #   Example: If the secret word is mango (5 letters), the player gets 7 chances.
 
 
+# DRAFT IDEAS
+# not yet sure how to code this (need more Py documentation)
+# grab the word
+# split the word's chars in a 'list'
+# 'hide' the chars and print them as _ , e.g.: _,_,_,_,_ (w,a,t,e,r)
+# if a char is provided, check if it's in the list
+#   if it is, replace the _ at the corresponding index with the character
+#   TODO: handle use-case with multiple instances of the same char (aPPle)
+#   display the char
+# increase the counter
+# etc.
 
 def populate_list_of_words():
     # define a static list of words
