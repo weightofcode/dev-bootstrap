@@ -41,10 +41,21 @@ def get_random_word():
     # grab a random word from list_of_words
     words = generate_list_of_words()
     random_word = random.choice(list_of_words)
+    print(f"DEBUG: random_word = {random_word}")
     return random_word
 
-def display_word(word):
-    # code?
+def display_word():
+    # display chars based on word len
+    # return type should be a list
+    word = get_random_word()
+    for c in range(len(word)):
+        # print the the word as a list of _s
+
+        # ask user for input here or in main?
+        i = input("Enter a character: ")
+        if i == c:
+            # locate c in word and assign the value provided by the user
+            # print it
     return list_of_chars_in_word
 
 
