@@ -1,4 +1,3 @@
-import random
 
 
 # - The program randomly selects a word from a list of secret words.
@@ -21,14 +20,27 @@ import random
 # increase the counter
 # etc.
 
-def populate_list_of_words():
-    # define a static list of words
-    # perhaps use a random word generator
-    # with API from a dedicated site?
+# py -m pip install requests
+
+
+import random
+import requests
+
+
+
+def generate_list_of_words():
+    # NOTE: This may become unreliable with network issues or if website is down
+    # consider random_word library (real words, not scrambled strings)
+    words_wiki = "https://www.mit.edu/~ecprice/wordlist.10000"
+    __r = requests.get(words_wiki)
+    list_of_words = __r.content.splitlines()
+    # print(f"DEBUG: list_of_words = {list_of_words}")
     return list_of_words
 
-def get_word():
+def get_random_word():
     # grab a random word from list_of_words
+    words = generate_list_of_words()
+    random_word = random.choice(list_of_words)
     return random_word
 
 def display_word(word):
