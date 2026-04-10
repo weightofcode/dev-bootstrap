@@ -38,25 +38,32 @@ def generate_list_of_words():
     return list_of_words
 
 def get_random_word():
-    # grab a random word from list_of_words
     words = generate_list_of_words()
-    random_word = random.choice(list_of_words)
+    random_word = random.choice(words)
     print(f"DEBUG: random_word = {random_word}")
     return random_word
 
-def display_word():
-    # display chars based on word len
-    # return type should be a list
-    word = get_random_word()
-    for c in range(len(word)):
-        # print the the word as a list of _s
+def obfuscate_random_word():
+    obfuscated_word = get_random_word()
+    for c in range(len(obfuscated_word)):
+        c.replace("_")
+        print(c)
+    print(f"DEBUG: obfuscated_word = {obfuscated_word}")
+    return obfuscated_word
 
-        # ask user for input here or in main?
+def guess_random_word():
+    obfuscated_word = obfuscate_random_word()
+    attempt = 0
+    max_attempts = len(obfuscated_word) + 2
+    # maybe use while:
+    for c in range(len(max_attempts)):
         i = input("Enter a character: ")
-        if i == c:
+        if i == c.exists(obfuscated_word):
             # locate c in word and assign the value provided by the user
-            # print it
-    return list_of_chars_in_word
+            obfuscated_word[c].replace(i)
+            print(f"DEBUG: {i}")
+        # print it
+    # return list_of_chars_in_word
 
 
 
@@ -75,6 +82,12 @@ def greet_user():
 
 
 def main():
+    generate_list_of_words()
+    obfuscate_random_word() # already includes get_random_word()
+
+    # guess_random_word()
+
+
     return 0
 
 if __name__ == "__main__":
