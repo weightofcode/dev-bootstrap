@@ -43,11 +43,22 @@ def get_random_word():
     print(f"DEBUG: random_word = {random_word}")
     return random_word
 
+# def obfuscate_random_word():
+#     random_word = get_random_word()
+#     obfuscated_word = ""
+#     # for c in range(len(random_word)):
+#     #     obfuscated_word[c].replace(f"{c}", "_")
+#     for c in random_word:
+#         obfuscated_word = random_word.replace(c, "_")
+#         print(f"c = {c}")
+#     print(f"DEBUG: obfuscated_word = {obfuscated_word}")
+#     return obfuscated_word
+
 def obfuscate_random_word():
-    obfuscated_word = get_random_word()
-    for c in range(len(obfuscated_word)):
-        c.replace("_")
-        print(c)
+    random_word = get_random_word()
+    obfuscated_word = ""
+    for c in random_word:
+        obfuscated_word += '_, '
     print(f"DEBUG: obfuscated_word = {obfuscated_word}")
     return obfuscated_word
 
@@ -65,8 +76,6 @@ def guess_random_word():
         # print it
     # return list_of_chars_in_word
 
-
-
 def greet_user():
     print("---------------------------------------------------------------------")
     username = input("Who are you? ", )
@@ -79,15 +88,10 @@ def greet_user():
 
 
 
-
-
 def main():
     generate_list_of_words()
     obfuscate_random_word() # already includes get_random_word()
-
     # guess_random_word()
-
-
     return 0
 
 if __name__ == "__main__":
