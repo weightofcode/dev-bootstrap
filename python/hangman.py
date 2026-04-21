@@ -34,16 +34,17 @@ def generate_list_of_words():
     words_wiki = "https://www.mit.edu/~ecprice/wordlist.10000"
     __r = requests.get(words_wiki)
     list_of_words = __r.content.splitlines()
-    # print(f"DEBUG: list_of_words = {list_of_words}")
     return list_of_words
 
 def get_random_word():
+    # TODO use this as param
     words = generate_list_of_words()
     random_word = random.choice(words)
     print(f"DEBUG: random_word = {random_word}")
     return random_word
 
 def obfuscate_random_word():
+    # TODO use this as param
     random_word = get_random_word()
     obfuscated_word = ""
     for c in random_word:
@@ -52,6 +53,7 @@ def obfuscate_random_word():
     return obfuscated_word
 
 def guess_random_word():
+    # TODO use this as param
     obfuscated_word = obfuscate_random_word()
     attempt = 0
     max_attempts = len(obfuscated_word) + 2
@@ -61,7 +63,7 @@ def guess_random_word():
             attempt += 1
             # locate c in word and assign the value provided by the user
             # cc = obfuscated_word.find(c).replace("_", c)
-            print(f"DEBUG: {c}")
+            print(f"DEBUG: c = {c}")
 
 def greet_user():
     print("---------------------------------------------------------------------")
@@ -74,13 +76,10 @@ def greet_user():
     print("---------------------------------------------------------------------")
 
 
-
 def main():
     greet_user()
     generate_list_of_words()
-    obfuscate_random_word() # already includes get_random_word()
     guess_random_word()
-    return 0
 
 if __name__ == "__main__":
     main()
