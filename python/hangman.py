@@ -45,31 +45,40 @@ def get_random_word():
 def obfuscate_random_word():
     random_word = get_random_word()
     obfuscated_word = ""
+    # NOTE: can use something called 'string multiplication'
+    # read more on it
     for c in random_word:
         obfuscated_word += '_, '
     print(f"DEBUG: obfuscated_word = {obfuscated_word}")
     return obfuscated_word
 
 def guess_random_word():
-
     # usecase: char exists in multiple copies in the word (example: arrival)
     #   - find all occurences (even if it's only one)
     #   - replace all occurences
     # NOTE: replace() replaces ALL OCCURENCES (no need for loops)
 
+    # use a list for easy management of the character replacement
 
-    obfuscated_word = obfuscate_random_word()
+    rand_word = get_random_word()
+    obfuscated_word = ["_"] * len(rand_word) # str multiplication
     attempt = 0
-    print(f"DEBUG len(obfuscated_word) = {len(obfuscated_word)}")
-    max_attempts = len(obfuscated_word)
+    max_attempts = len(rand_word) + 2
+    print(f"DEBUG3: rand_word = {rand_word}")
+    print(f"DEBUG4: len(obfuscated_word) = {len(obfuscated_word)}")
+    print(f"DEBUG5: obfuscated_word = {obfuscated_word}")
 
     while attempt < max_attempts:
         inp = input("Enter a character: ")
-        if inp in obfuscated_word:
-            obfuscated_word = obfuscated_word.replace("-", inp)
-            print(f"DEBUG4: obfuscated_word = {obfuscated_word}")
-        attempt += 1
-    print(f"Exceeded max num of attemps: {max_attempts}")
+        for i, c in enumerate(obfuscated_word):
+            if c == inp:
+                obfuscated_word[i] = inp
+                print(f"DEBUG6: {obfuscated_word}")
+            else:
+                print("Wrong guess. Try again.")
+            attempt += 1
+        print(f"DEBUG6: {obfuscated_word}")
+    return
 
 def greet_user():
     print("---------------------------------------------------------------------")
