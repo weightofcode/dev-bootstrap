@@ -37,14 +37,12 @@ def generate_list_of_words():
     return list_of_words
 
 def get_random_word():
-    # TODO use this as param
     words = generate_list_of_words()
     random_word = random.choice(words)
     print(f"DEBUG: random_word = {random_word}")
     return random_word
 
 def obfuscate_random_word():
-    # TODO use this as param
     random_word = get_random_word()
     obfuscated_word = ""
     for c in random_word:
@@ -53,17 +51,25 @@ def obfuscate_random_word():
     return obfuscated_word
 
 def guess_random_word():
-    # TODO use this as param
+
+    # usecase: char exists in multiple copies in the word (example: arrival)
+    #   - find all occurences (even if it's only one)
+    #   - replace all occurences
+    # NOTE: replace() replaces ALL OCCURENCES (no need for loops)
+
+
     obfuscated_word = obfuscate_random_word()
     attempt = 0
-    max_attempts = len(obfuscated_word) + 2
+    print(f"DEBUG len(obfuscated_word) = {len(obfuscated_word)}")
+    max_attempts = len(obfuscated_word)
+
     while attempt < max_attempts:
-        c = input("Enter a character: ")
-        if obfuscated_word.find(c):
-            attempt += 1
-            # locate c in word and assign the value provided by the user
-            # cc = obfuscated_word.find(c).replace("_", c)
-            print(f"DEBUG: c = {c}")
+        inp = input("Enter a character: ")
+        if inp in obfuscated_word:
+            obfuscated_word = obfuscated_word.replace("-", inp)
+            print(f"DEBUG4: obfuscated_word = {obfuscated_word}")
+        attempt += 1
+    print(f"Exceeded max num of attemps: {max_attempts}")
 
 def greet_user():
     print("---------------------------------------------------------------------")
