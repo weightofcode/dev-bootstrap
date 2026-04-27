@@ -1,5 +1,3 @@
-
-
 # - The program randomly selects a word from a list of secret words.
 # - The player has limited chances to guess the word.
 # - When a correct letter is guessed, it is revealed in its correct position.
@@ -27,14 +25,15 @@ import random
 import requests
 
 
-
 def generate_list_of_words():
     # NOTE: This may become unreliable with network issues or if website is down
     # consider random_word library (real words, not scrambled strings)
     words_wiki = "https://www.mit.edu/~ecprice/wordlist.10000"
     __r = requests.get(words_wiki)
-    list_of_words = __r.content.splitlines()
+    text_content = __r.content.decode("utf-8")  # decode raw bytes from requests
+    list_of_words = text_content.splitlines()
     return list_of_words
+
 
 def get_random_word():
     words = generate_list_of_words()
@@ -42,47 +41,32 @@ def get_random_word():
     print(f"DEBUG: random_word = {random_word}")
     return random_word
 
-def obfuscate_random_word():
-    random_word = get_random_word()
-    obfuscated_word = ""
-    # NOTE: can use something called 'string multiplication'
-    # read more on it
-    for c in random_word:
-        obfuscated_word += '_, '
-    print(f"DEBUG: obfuscated_word = {obfuscated_word}")
-    return obfuscated_word
 
 def guess_random_word():
-    # usecase: char exists in multiple copies in the word (example: arrival)
-    #   - find all occurences (even if it's only one)
-    #   - replace all occurences
-    # NOTE: replace() replaces ALL OCCURENCES (no need for loops)
-
-    # use a list for easy management of the character replacement
-
     rand_word = get_random_word()
-    obfuscated_word = ["_"] * len(rand_word) # str multiplication
+    obfuscated_word = ["_"] * len(rand_word)  # str multiplication
     attempt = 0
     max_attempts = len(rand_word) + 2
     print(f"DEBUG3: rand_word = {rand_word}")
     print(f"DEBUG4: len(obfuscated_word) = {len(obfuscated_word)}")
     print(f"DEBUG5: obfuscated_word = {obfuscated_word}")
-
     while attempt < max_attempts:
         inp = input("Enter a character: ")
-        for i, c in enumerate(obfuscated_word):
+        attempt += 1
+        print(f"DEBUG6: {attempt}")
+        for i, c in enumerate(rand_word):
             if c == inp:
                 obfuscated_word[i] = inp
-                print(f"DEBUG6: {obfuscated_word}")
-            else:
-                print("Wrong guess. Try again.")
-            attempt += 1
-        print(f"DEBUG6: {obfuscated_word}")
+                print(f"DEBUG7: {obfuscated_word}")
+        print(f"DEBUG8: {obfuscated_word}")
     return
+
 
 def greet_user():
     print("---------------------------------------------------------------------")
-    username = input("Who are you? ", )
+    username = input(
+        "Who are you? ",
+    )
     print("Hello", username, "!")
     print("Objective:\t Guess the word.")
     print("Gameplay:\t Guess characters.")
@@ -95,6 +79,7 @@ def main():
     greet_user()
     generate_list_of_words()
     guess_random_word()
+
 
 if __name__ == "__main__":
     main()
