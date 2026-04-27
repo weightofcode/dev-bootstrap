@@ -53,11 +53,10 @@ def guess_random_word():
     while attempt < max_attempts:
         inp = input("Enter a character: ")
         attempt += 1
-        print(f"DEBUG6: {attempt}")
+        print(f"DEBUG6: Attempt: {attempt}. Attempts left: {max_attempts-attempt}")
         for i, c in enumerate(rand_word):
             if c == inp:
                 obfuscated_word[i] = inp
-                print(f"DEBUG7: {obfuscated_word}")
         print(f"DEBUG8: {obfuscated_word}")
     return
 
