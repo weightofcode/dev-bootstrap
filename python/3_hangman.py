@@ -3,22 +3,6 @@
 # - When a correct letter is guessed, it is revealed in its correct position.
 # - The player wins if all letters are guessed before running out of chances.
 # - For simplicity, the program gives word length + 2 chances.
-#   Example: If the secret word is mango (5 letters), the player gets 7 chances.
-
-
-# DRAFT IDEAS
-# not yet sure how to code this (need more Py documentation)
-# grab the word
-# split the word's chars in a 'list'
-# 'hide' the chars and print them as _ , e.g.: _,_,_,_,_ (w,a,t,e,r)
-# if a char is provided, check if it's in the list
-#   if it is, replace the _ at the corresponding index with the character
-#   TODO: handle use-case with multiple instances of the same char (aPPle)
-#   display the char
-# increase the counter
-# etc.
-
-# py -m pip install requests
 
 
 import random
@@ -42,9 +26,14 @@ def get_random_word():
     return random_word
 
 
-def guess_random_word():
+def obfuscate_word():
     rand_word = get_random_word()
-    obfuscated_word = ["_"] * len(rand_word)  # str multiplication
+    obfuscated_word = ["_"] * len(rand_word)
+    return obfuscated_word
+
+def guess_random_word():
+    # rand_word = get_random_word()
+    # obfuscated_word = ["_"] * len(rand_word)  # str multiplication
     attempt = 0
     max_attempts = len(rand_word) + 2
     print(f"DEBUG3: rand_word = {rand_word}")
@@ -53,7 +42,7 @@ def guess_random_word():
     while attempt < max_attempts:
         inp = input("Enter a character: ")
         attempt += 1
-        print(f"DEBUG6: Attempt: {attempt}. Attempts left: {max_attempts-attempt}")
+        print(f"DEBUG6: Attempt: {attempt}. Attempts left: {max_attempts - attempt}")
         for i, c in enumerate(rand_word):
             if c == inp:
                 obfuscated_word[i] = inp
