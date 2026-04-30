@@ -30,9 +30,14 @@ def obfuscate_word(rand_word):  # >>>>
     return obfuscated_word
 # <<<<
 
+# TODO:
+# Should the user have a chance to guess the word?
+# Display explicit failure message
+
 def guess_random_word(rand_word, obfuscated_word):  # >>>>
     attempt = 0
     max_attempts = len(rand_word) + 2
+    chars_to_guess = len(rand_word)
     print(f"DEBUG3: rand_word = {rand_word}")
     print(f"DEBUG4: len(obfuscated_word) = {len(obfuscated_word)}")
     print(f"DEBUG5: obfuscated_word = {obfuscated_word}")
@@ -43,6 +48,11 @@ def guess_random_word(rand_word, obfuscated_word):  # >>>>
         for i, c in enumerate(rand_word):
             if c == inp:
                 obfuscated_word[i] = inp
+                chars_to_guess -= 1
+                print(f"DEBUG6: chars_to_guess = {chars_to_guess}")
+                if chars_to_guess == 0:
+                    print("SUCCESS! You guessed the word!")
+                    return
         print(f"WORD TO GUESS: {obfuscated_word}")
         print("---------------------------------------------------------------------")
     return
@@ -61,7 +71,6 @@ def greet_user():  # >>>>
     print("---------------------------------------------------------------------")
 # <<<<
 
-
 def main():  # >>>>
     # Hello
     greet_user()
@@ -71,7 +80,6 @@ def main():  # >>>>
     m_obf_word = obfuscate_word(m_random_word)
     # Use the data
     guess_random_word(m_random_word, m_obf_word)
-
 
 
 if __name__ == "__main__":
