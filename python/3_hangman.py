@@ -11,7 +11,7 @@ import requests
 
 def generate_list_of_words():  # >>>>
     # NOTE: This may become unreliable with network issues or if website is down
-    # consider random_word library (real words, not scrambled strings)
+    # Consider random_word library (real words, not scrambled strings)
     words_wiki = "https://www.mit.edu/~ecprice/wordlist.10000"
     __r = requests.get(words_wiki)
     text_content = __r.content.decode("utf-8")  # decode raw bytes from requests
@@ -34,25 +34,27 @@ def guess_random_word(rand_word, obfuscated_word):  # >>>>
     attempt = 0
     max_attempts = len(rand_word) + 2
     chars_to_guess = len(rand_word)
-    print(f"DEBUG3: rand_word = {rand_word}")
-    print(f"DEBUG4: len(obfuscated_word) = {len(obfuscated_word)}")
-    print(f"DEBUG5: obfuscated_word = {obfuscated_word}")
+
+    # some subtraction operation here to calculate the value of this data
+    actual_remaining_not_guessed_chars = 0 
+
+    print(f"DEBUG1: rand_word = {rand_word}")
     while attempt < max_attempts:
         inp = input("Enter a character: ")
         attempt += 1
-        print(f"INFO: Attempt:\t\t {attempt}. Attempts left: {max_attempts - attempt}")
+        print(f"INFO: Attempt: {attempt}. Attempts left: {max_attempts - attempt}")
         for i, c in enumerate(rand_word):
             if c == inp:
                 obfuscated_word[i] = inp
                 chars_to_guess -= 1
-                print(f"DEBUG6: chars_to_guess = {chars_to_guess}")
+                print(f"DEBUG2: chars_to_guess = {chars_to_guess}")
                 # TODO: Success condition works incorrectly in case multiple chars 
                 # are guessed with the same input value
                 if chars_to_guess == 0:
-                    print("SUCCESS!\t You guessed the word!")
+                    print("SUCCESS! You guessed the word!")
                     return
         # TODO: Display explicit failure message
-        print(f"WORD TO GUESS:\t {obfuscated_word}")
+        print(f"WORD TO GUESS: {obfuscated_word}")
         print("---------------------------------------------------------------------")
     return
 # <<<<
