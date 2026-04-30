@@ -30,10 +30,6 @@ def obfuscate_word(rand_word):  # >>>>
     return obfuscated_word
 # <<<<
 
-# TODO:
-# Should the user have a chance to guess the word?
-# Display explicit failure message
-
 def guess_random_word(rand_word, obfuscated_word):  # >>>>
     attempt = 0
     max_attempts = len(rand_word) + 2
@@ -50,11 +46,12 @@ def guess_random_word(rand_word, obfuscated_word):  # >>>>
                 obfuscated_word[i] = inp
                 chars_to_guess -= 1
                 print(f"DEBUG6: chars_to_guess = {chars_to_guess}")
-                # TODO: Fix success condition: works incorrectly in case 
-                # multiple chars are guessed with the same input value
+                # TODO: Success condition works incorrectly in case multiple chars 
+                # are guessed with the same input value
                 if chars_to_guess == 0:
                     print("SUCCESS!\t You guessed the word!")
                     return
+        # TODO: Display explicit failure message
         print(f"WORD TO GUESS:\t {obfuscated_word}")
         print("---------------------------------------------------------------------")
     return
