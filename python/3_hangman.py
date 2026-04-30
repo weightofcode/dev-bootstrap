@@ -44,25 +44,25 @@ def guess_random_word(rand_word, obfuscated_word):  # >>>>
     while attempt < max_attempts:
         inp = input("Enter a character: ")
         attempt += 1
-        print(f"INFO: Attempt: {attempt}. Attempts left: {max_attempts - attempt}")
+        print(f"INFO: Attempt:\t\t {attempt}. Attempts left: {max_attempts - attempt}")
         for i, c in enumerate(rand_word):
             if c == inp:
                 obfuscated_word[i] = inp
                 chars_to_guess -= 1
                 print(f"DEBUG6: chars_to_guess = {chars_to_guess}")
+                # TODO: Fix success condition: works incorrectly in case 
+                # multiple chars are guessed with the same input value
                 if chars_to_guess == 0:
-                    print("SUCCESS! You guessed the word!")
+                    print("SUCCESS!\t You guessed the word!")
                     return
-        print(f"WORD TO GUESS: {obfuscated_word}")
+        print(f"WORD TO GUESS:\t {obfuscated_word}")
         print("---------------------------------------------------------------------")
     return
 # <<<<
 
 def greet_user():  # >>>>
     print("---------------------------------------------------------------------")
-    username = input(
-        "Who are you? ",
-    )
+    username = input("Who are you? ")
     print("Hello", username, "!")
     print("Objective:\t Guess the word.")
     print("Gameplay:\t Guess characters.")
