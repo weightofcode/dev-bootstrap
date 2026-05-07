@@ -34,30 +34,40 @@ def obfuscate_word(rand_word):  # >>>>
 def guess_random_word(rand_word, obfuscated_word):  # >>>>
     attempt = 0
     max_attempts = len(rand_word) + 2
+    guessed_chars = set()
     print(f"DEBUG1: rand_word = {rand_word}")
-    # TODO: Handle duplicate guesses
-    # if a user entered again an already guessed character, inform the user and return to input() call
-    # otherwise we do the whole math again with those characters, which is wrong
     while attempt < max_attempts:
-        chars_to_guess = len(rand_word)
-        number_of_guessed_chars = 0 # move inside while loop to reset counter to 0, to avoid incorrect calculation of guessed chars
-        inp = input("Enter a character: ")
+        number_of_guessed_chars = 0
+        inp = input("Enter a character: ").lower()
+        # make sure user inputs only one character
+        if len(inp) != 1 or not inp.isalpha():
+            print("INFO: Please enter only one letter character!")
+            continue
+        # check for already guessed characters
+        if inp in guessed_chars:
+            print(f"INFO: The character [{inp}] has already been guessed. Try again.")
+            continue # don't increase guess counter
+        guessed_chars.add(inp)
         attempt += 1
-        print(f"INFO: Attempt: {attempt}. Attempts left: {max_attempts - attempt}")
+        # update obfuscated_word
         for i, c in enumerate(rand_word):
             if c == inp:
                 obfuscated_word[i] = inp
                 number_of_guessed_chars += 1
-        chars_to_guess = chars_to_guess - number_of_guessed_chars
-        print(f"DEBUG2: chars_to_guess = {chars_to_guess}")
-        if chars_to_guess == 0:
+        # check for victory condition
+        win_game = True
+        for c in rand_word:
+            if c != ' ' and c not in obfuscated_word:
+                win_game = False
+                break
+        if win_game:
             print("SUCCESS! You guessed the word!")
             return
-        else:
-            print("FAILURE! Better luck next time!") # TODO: is this OK here?
-        # TODO: Display explicit failure message
-        print(f"WORD TO GUESS: {obfuscated_word}")
+        print(f"INFO: Attempt: {attempt}. Attempts left: {max_attempts - attempt}")
+        print(f"DEBUG2: current word -> {''.join(obfuscated_word)}")
         print("---------------------------------------------------------------------")
+    print(f"FAILURE! Better luck next time!")
+    print(f"WORD TO GUESS: {''.join(obfuscated_word)}")
     return
 # <<<<
 
