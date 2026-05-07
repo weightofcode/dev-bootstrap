@@ -22,7 +22,6 @@ def generate_list_of_words():  # >>>>
 
 def get_random_word(list_of_words):  # >>>>
     random_word = random.choice(list_of_words)
-    print(f"DEBUG: random_word = {random_word}")
     return random_word
 # <<<<
 
@@ -35,7 +34,7 @@ def guess_random_word(rand_word, obfuscated_word):  # >>>>
     attempt = 0
     max_attempts = len(rand_word) + 2
     guessed_chars = set()
-    print(f"DEBUG1: rand_word = {rand_word}")
+    print(f"WORD TO GUESS: [{'_,'.join(obfuscated_word)}]")
     while attempt < max_attempts:
         number_of_guessed_chars = 0
         inp = input("Enter a character: ").lower()
@@ -45,7 +44,7 @@ def guess_random_word(rand_word, obfuscated_word):  # >>>>
             continue
         # check for already guessed characters
         if inp in guessed_chars:
-            print(f"INFO: The character [{inp}] has already been guessed. Try again.")
+            print(f"INFO: The character [{inp}] has already been used. Try again.")
             continue # don't increase guess counter
         guessed_chars.add(inp)
         attempt += 1
@@ -61,13 +60,14 @@ def guess_random_word(rand_word, obfuscated_word):  # >>>>
                 win_game = False
                 break
         if win_game:
+            print(f"WORD TO GUESS: [{'_,'.join(obfuscated_word)}]")
             print("SUCCESS! You guessed the word!")
             return
         print(f"INFO: Attempt: {attempt}. Attempts left: {max_attempts - attempt}")
-        print(f"DEBUG2: current word -> {''.join(obfuscated_word)}")
+        print(f"CURRENT WORD: [{','.join(obfuscated_word)}]")
         print("---------------------------------------------------------------------")
     print(f"FAILURE! Better luck next time!")
-    print(f"WORD TO GUESS: {''.join(obfuscated_word)}")
+    print(f"ORIGINAL WORD: [{','.join(rand_word)}]")
     return
 # <<<<
 
@@ -77,8 +77,8 @@ def greet_user():  # >>>>
     print("Hello", username, "!")
     print("Objective:\t Guess the word.")
     print("Gameplay:\t Guess characters.")
-    print("Rules:\t\t You may guess a character (word length + 2) times.")
-    print("* If you guessed the character, its position is revealed in word.")
+    print("Rules:\t\t You may guess (word length + 2) times.")
+    print("\t\t Guessed character is revealed.")
     print("---------------------------------------------------------------------")
 # <<<<
 
