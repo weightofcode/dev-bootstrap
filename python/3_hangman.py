@@ -40,22 +40,22 @@ def guess_random_word(rand_word, obfuscated_word):  # >>>>
     while attempt < max_attempts:
         number_of_guessed_chars = 0
         inp = input("Enter a character: ").lower()
-        # make sure user inputs only one character
+        # Make sure user inputs only one character
         if len(inp) != 1 or not inp.isalpha():
             print("INFO: Please enter only one letter character!")
             continue
-        # check for already guessed characters
+        # Check for already guessed characters
         if inp in guessed_chars:
             print(f"INFO: The character [{inp}] has already been used. Try again.")
             continue # don't increase guess counter
         guessed_chars.add(inp)
         attempt += 1
-        # update obfuscated_word
+        # Update obfuscated_word
         for i, c in enumerate(rand_word):
             if c == inp:
                 obfuscated_word[i] = inp
                 number_of_guessed_chars += 1
-        # check for victory condition
+        # Check for victory condition
         win_game = True
         for c in rand_word:
             if c != ' ' and c not in obfuscated_word:
