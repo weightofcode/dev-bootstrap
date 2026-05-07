@@ -31,8 +31,10 @@ def obfuscate_word(rand_word):  # >>>>
 # <<<<
 
 def guess_random_word(rand_word, obfuscated_word):  # >>>>
+    # NOTE: As it stands, the game is pretty brutal for someone 
+    # who's not English native. Increasing max_attempts for now.
     attempt = 0
-    max_attempts = len(rand_word) + 2
+    max_attempts = len(rand_word) + 4
     guessed_chars = set()
     print(f"WORD TO GUESS: [{','.join(obfuscated_word)}]")
     while attempt < max_attempts:
