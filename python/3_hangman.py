@@ -34,7 +34,7 @@ def guess_random_word(rand_word, obfuscated_word):  # >>>>
     attempt = 0
     max_attempts = len(rand_word) + 2
     guessed_chars = set()
-    print(f"WORD TO GUESS: [{'_,'.join(obfuscated_word)}]")
+    print(f"WORD TO GUESS: [{','.join(obfuscated_word)}]")
     while attempt < max_attempts:
         number_of_guessed_chars = 0
         inp = input("Enter a character: ").lower()
@@ -60,7 +60,7 @@ def guess_random_word(rand_word, obfuscated_word):  # >>>>
                 win_game = False
                 break
         if win_game:
-            print(f"WORD TO GUESS: [{'_,'.join(obfuscated_word)}]")
+            print(f"WORD TO GUESS: [{','.join(obfuscated_word)}]")
             print("SUCCESS! You guessed the word!")
             return
         print(f"INFO: Attempt: {attempt}. Attempts left: {max_attempts - attempt}")
